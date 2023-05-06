@@ -1,4 +1,6 @@
 ## Endpoints
-localhost
+**localhost**
+```
 - /video
 - /video/{name}
+```
