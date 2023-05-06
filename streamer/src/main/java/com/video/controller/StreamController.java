@@ -28,6 +28,6 @@ public class StreamController {
     @GetMapping("/{fileName}")
     public Mono < ResponseEntity < byte[] >> streamVideo(@RequestHeader(value = "Range", required = false) String httpRangeList,
         @PathVariable("fileName") String fileName) {
-        return Mono.just(streamService.streamVideoInChunks(fileName, httpRangeList));
+        return Mono.just(streamService.streamVideoInChunks("v1.mp4", httpRangeList));
     }
 }
