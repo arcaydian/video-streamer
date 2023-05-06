@@ -15,19 +15,19 @@ import reactor.core.publisher.Mono;
 @RestController
 @RequestMapping("/video")
 public class StreamController {
-	
-	@Autowired
-	private StreamService streamService;
-	
-	@GetMapping("")
-	public String appInfo() {
-		return "Rate limited application with intentional buffering in the video";
-	}
+
+    @Autowired
+    private StreamService streamService;
+
+    @GetMapping("")
+    public String appInfo() {
+        return "Rate limited application with intentional buffering in the video";
+    }
 
 
     @GetMapping("/{fileName}")
-    public Mono<ResponseEntity<byte[]>> streamVideo(@RequestHeader(value = "Range", required = false) String httpRangeList,
-                                                   @PathVariable("fileName") String fileName) {
+    public Mono < ResponseEntity < byte[] >> streamVideo(@RequestHeader(value = "Range", required = false) String httpRangeList,
+        @PathVariable("fileName") String fileName) {
         return Mono.just(streamService.streamVideoInChunks(fileName, httpRangeList));
     }
 }
